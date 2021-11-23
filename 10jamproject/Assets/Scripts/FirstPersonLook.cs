@@ -7,7 +7,7 @@ public class FirstPersonLook : MonoBehaviour
     //  public Transform character;
     public float mouseSensitivity = 100f;
     float xRotation = 0f;
-    float xMin = -20f, xMax = 80f;
+    float xMin = -15f, xMax = 40f;
 
 
 
