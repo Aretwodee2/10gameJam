@@ -10,22 +10,34 @@ public class HungerSystem : MonoBehaviour
     float maxHunger = 100f;
     public float currentHunger;
     private WaitForSeconds degenTick = new WaitForSeconds(20f) ;
-
-
+    private float degenSpeed =0.01f;
+    bool isEating;
     void Start()
     {
-        currentHunger = 50/maxHunger;
+        currentHunger = maxHunger/maxHunger;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         hungerImg.fillAmount = currentHunger;
+
        if ( currentHunger > 0)
         {
             StartCoroutine(HungerDegen());
 
         }
+      
+        /*if (isEating ==false && currentHunger > 0)
+       {
+            StartCoroutine(HungerDegen());
+       }
+        else
+        {
+            StopCoroutine(HungerDegen());
+        }
+        */
     }
     private IEnumerator HungerDegen()
     {
@@ -33,9 +45,14 @@ public class HungerSystem : MonoBehaviour
 
         while (currentHunger > 0)
         {
-            currentHunger -= 5 * Time.deltaTime;
+            currentHunger -= 1 * Time.deltaTime * degenSpeed;
             hungerImg.fillAmount = currentHunger;
             yield return degenTick;
         }
     }
+    private void Eating()
+    {
+        isEating = true; 
+    }
+
 }
