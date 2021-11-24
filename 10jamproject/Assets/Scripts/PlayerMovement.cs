@@ -22,6 +22,6 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
         gameObject.transform.Translate(new Vector3(x, 0, z) * speed * Time.deltaTime);
-        anim.SetFloat("speed", z);
+       
     }
 }
